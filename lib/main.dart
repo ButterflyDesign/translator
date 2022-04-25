@@ -67,16 +67,16 @@ void printMembers(CompilationUnit unit) {
 
   for (CompilationUnitMember unitMember in unit.declarations) {
     if (unitMember is ClassDeclaration) {
-      
+      print('WidgetbookComponent(name: ' '${unitMember.name}' ', useCases: [');
+      print('            WidgetbookUseCase(');
+      print('                name: ' 'Default' ',');
+      print(
+          '                builder: (BuildContext context) => ${unitMember.name}()),');
+      print('          ]),');
       for (ClassMember classMember in unitMember.members) {
       
         if (classMember is MethodDeclaration) {
-          print('WidgetbookComponent(name: ' '${classMember.name}' ', useCases: [');
-          print('            WidgetbookUseCase(');
-          print('                name: ' 'Default' ',');
-          print(
-              '                builder: (BuildContext context) => const ${classMember.name}()),');
-          print('          ]),');
+          
           //print('  ${classMember.name}');
         } else if (classMember is ConstructorDeclaration) {
           for (FormalParameter field in classMember.parameters.parameters) {
