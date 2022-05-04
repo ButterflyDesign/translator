@@ -4,7 +4,6 @@ import 'package:analyzer/dart/analysis/analysis_context_collection.dart';
 import 'package:analyzer/dart/analysis/results.dart';
 import 'package:analyzer/dart/analysis/session.dart';
 import 'package:analyzer/dart/ast/ast.dart';
-import 'package:antlr4/antlr4.dart';
 
 void main() async {
   final dir = Directory(
@@ -66,7 +65,8 @@ void printMembers(CompilationUnit unit) {
   
 
   for (CompilationUnitMember unitMember in unit.declarations) {
-    if (unitMember is ClassDeclaration) {
+    
+    if (unitMember is ClassDeclaration && unitMember.extendsClause!.superclass.name.name.contains('Widget')) {
       print('WidgetbookComponent(name: ' '${unitMember.name}' ', useCases: [');
       print('            WidgetbookUseCase(');
       print('                name: ' 'Default' ',');
